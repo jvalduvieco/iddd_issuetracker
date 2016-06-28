@@ -1,4 +1,4 @@
-package java.com.saasovation.issuetracker.domain.model
+package com.saasovation.issuetracker.domain.model
 
 import java.util.*
 

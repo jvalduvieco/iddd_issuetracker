@@ -1,4 +1,4 @@
-package java.com.saasovation.issuetracker.domain.model
+package com.saasovation.issuetracker.domain.model
 
 //   Copyright 2012,2013 Vaughn Vernon
 //
@@ -14,9 +14,11 @@ package java.com.saasovation.issuetracker.domain.model
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-interface DomainEventSubscriber<T> {
+import java.util.*
 
-    fun handleEvent(aDomainEvent: T)
+interface DomainEvent {
 
-    fun subscribedToEventType(): Class<T>
+    val eventVersion: Int
+
+    val occurredOn: Date
 }

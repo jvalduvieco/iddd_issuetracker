@@ -1,8 +1,8 @@
 package com.saasovation.issuetracker.domain.model.product.issue
 
+import com.saasovation.issuetracker.domain.model.DomainEvent
 import com.saasovation.issuetracker.domain.model.product.ProductId
 import com.saasovation.issuetracker.domain.model.tenant.TenantId
-import java.com.saasovation.issuetracker.domain.model.DomainEvent
 import java.time.Instant
 import java.util.*
 

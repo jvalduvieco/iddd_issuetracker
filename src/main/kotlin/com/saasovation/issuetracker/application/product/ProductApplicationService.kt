@@ -11,8 +11,8 @@ class ProductApplicationService(private val productRepository: ProductRepository
                 ProductId(),
                 name,
                 description,
-                ProductManager(productManagerId),
-                IssueAssigner(issueAssignerId))
+                ProductManagerId(),
+                IssueAssigner())
 
         this.productRepository.save(product)
     }

@@ -1,7 +1,5 @@
 package com.saasovation.issuetracker.domain.model.product
 
-import java.util.*
-
 import com.saasovation.issuetracker.domain.model.tenant.TenantId
 
 class ProductDefectivenessRanker(private val productRepository: ProductRepository) {
