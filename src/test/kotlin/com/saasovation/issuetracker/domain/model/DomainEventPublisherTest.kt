@@ -27,9 +27,9 @@ class DomainEventPublisherTest {
         var productId: ProductId = ProductId()
         var issueId: IssueId = IssueId()
         var aSubscriber: Subscriber = Subscriber()
-        DomainEventPublisher().subscribe(aSubscriber)
+        DomainEventPublisher.subscribe(aSubscriber)
 
-        DomainEventPublisher().publish(
+        DomainEventPublisher.publish(
                 IssueAssignedToExistingBacklogItem(tenantId, productId, issueId, IssueType.Defect, "www"))
 
         assertTrue(aSubscriber.called)

@@ -16,7 +16,7 @@ import java.util.*
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-class DomainEventPublisher private constructor() {
+object DomainEventPublisher {
 
     private var isPublishing: Boolean = false
 
@@ -95,13 +95,5 @@ class DomainEventPublisher private constructor() {
     @SuppressWarnings("rawtypes")
     private fun setSubscribers(aSubscriberList: MutableList<Any>?) {
         this.subscribers = aSubscriberList
-    }
-
-    companion object {
-        operator fun invoke(): DomainEventPublisher {
-            return instance
-        }
-
-        val instance = DomainEventPublisher()
     }
 }
