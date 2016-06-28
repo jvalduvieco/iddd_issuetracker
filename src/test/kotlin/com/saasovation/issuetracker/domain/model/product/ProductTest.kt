@@ -67,4 +67,25 @@ class ProductTest {
 
         assertEquals(anotherIssueId, product.issues[anIssueId]!!.duplicateOf)
     }
+
+    @Test
+    fun rejectAnIssue() {
+        val product: Product = createProduct()
+        val anIssueId: IssueId = IssueId()
+        product.reportDefect(anIssueId, "aa", "bb", Severity.Low)
+
+        product.rejectIssue(anIssueId)
+
+        assertTrue(product.issues[anIssueId]!!.rejected)
+    }
+
+    @Test
+    fun determineProductStatisticsTest() {
+        val product: Product = createProduct()
+
+        repeat(1000, { a: Int -> product.reportDefect(IssueId(), "aa${a}", "bb", Severity.Low) })
+        val defectStatistics: DefectStatistics = product.determineDefectStatistics(120)
+
+        assertEquals(8.33, defectStatistics.defectDensity, 0.1)
+    }
 }

@@ -40,4 +40,16 @@ class Product(
         issues[issueId]?.assignTo(userId)
     }
 
+    fun determineDefectStatistics(KLOC: Int): DefectStatistics {
+        val defectDensity = (issues.filter { it.value.isDefect() }.count() / KLOC).toDouble()
+        val countIssues = issues.filter { it.value.isDefect() }.count()
+        return DefectStatistics(
+                defectsReported = 22,
+                defectsFixed = 22,
+                defectsKnown = issues.filter { it.value.isDefect() }.count(),
+                KLOC = KLOC
+        )
+    }
+
 }
+
