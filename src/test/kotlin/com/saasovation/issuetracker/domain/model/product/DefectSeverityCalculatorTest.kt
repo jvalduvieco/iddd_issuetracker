@@ -4,6 +4,7 @@ import com.saasovation.issuetracker.domain.model.DomainEventPublisher
 import com.saasovation.issuetracker.domain.model.product.issue.IssueId
 import com.saasovation.issuetracker.domain.model.product.issue.Severity
 import com.saasovation.issuetracker.domain.model.tenant.TenantId
+import com.saasovation.issuetracker.port.adapter.FeedDefectSeverityCalculator
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -24,8 +25,9 @@ class DefectSeverityCalculatorTest {
         val aProduct: Product = createProduct(ProductId())
         val anotherProduct: Product = createProduct(ProductId())
         val defectCalculator: DefectSeverityCalculator = DefectSeverityCalculator()
+        val feedDefectSeverityCalculator: FeedDefectSeverityCalculator = FeedDefectSeverityCalculator(defectCalculator)
 
-        DomainEventPublisher.subscribe(defectCalculator)
+        DomainEventPublisher.subscribe(feedDefectSeverityCalculator)
         aProduct.reportDefect(IssueId(), "a Description", "a summary", Severity.Low)
         aProduct.reportDefect(IssueId(), "a Description", "a summary", Severity.High)
         aProduct.featureRequest(IssueId(), "a desc", "a summ", Severity.Medium)
