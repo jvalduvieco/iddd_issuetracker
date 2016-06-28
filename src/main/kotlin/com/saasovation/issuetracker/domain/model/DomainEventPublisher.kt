@@ -98,15 +98,10 @@ class DomainEventPublisher private constructor() {
     }
 
     companion object {
-
-        private val instance = object : ThreadLocal<DomainEventPublisher>() {
-            override fun initialValue(): DomainEventPublisher {
-                return DomainEventPublisher()
-            }
+        operator fun invoke(): DomainEventPublisher {
+            return instance
         }
 
-        fun instance(): DomainEventPublisher {
-            return instance.get()
-        }
+        val instance = DomainEventPublisher()
     }
 }
