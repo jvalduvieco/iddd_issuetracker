@@ -15,8 +15,11 @@ class Issue(
 
     private val assignedBacklogItemId: String? = null
     var rejected: Boolean = false
+        private set
     var assignedTo: UserId? = null
+        private set
     var duplicateOf: IssueId? = null
+        private set
 
     init {
         DomainEventPublisher.instance().publish(
