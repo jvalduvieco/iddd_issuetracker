@@ -22,12 +22,17 @@ class Product(
         this.severityTotals = SeverityTotals(0, 0, 0)
     }
 
+    protected fun reportIssue(issueId: IssueId, description: String, summary: String, issueType: IssueType, severity: Severity): Issue {
+        val issue: Issue = Issue(this.tenantId, this.productId, issueId, description, summary, issueType, severity)
+        return issue
+    }
+
     fun reportDefect(issueId: IssueId, description: String, summary: String, severity: Severity): Issue {
-        return Issue(this.tenantId, this.productId, issueId, description, summary, IssueType.Defect, severity)
+        return reportIssue(issueId, description, summary, IssueType.Defect, severity)
     }
 
     fun featureRequest(issueId: IssueId, description: String, summary: String, severity: Severity): Issue {
-        return Issue(this.tenantId, this.productId, issueId, description, summary, IssueType.FeatureRequest, severity)
+        return reportIssue(issueId, description, summary, IssueType.FeatureRequest, severity)
     }
 
     /* TODO: Move this to somewhere else

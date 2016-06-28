@@ -22,7 +22,7 @@ class Issue(
         private set
 
     init {
-        DomainEventPublisher().publish(
+        DomainEventPublisher.publish(
                 IssueReported(
                         this.tenantId, this.productId, this.issueId,
                         this.description, this.summary, this.type, this.severity))
